@@ -14,7 +14,7 @@ phases:
     commands:
       - echo logging in to ecr...
       - $(aws ecr get-login --no-include-email --region $AWS_REGION)
-      - echo 473ddc85-4464-49d7-b05a-2174eb10efcf | docker login -u vasiliymikhailov --password-stdin
+      - echo $DOCKER_PASSWORD | docker login -u $DOCKER_ACCOUNT --password-stdin
       - docker pull $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/test-driven-users:prod || true
       - docker pull $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/test-driven-client:builder || true
       - docker pull $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/test-driven-client:prod || true
